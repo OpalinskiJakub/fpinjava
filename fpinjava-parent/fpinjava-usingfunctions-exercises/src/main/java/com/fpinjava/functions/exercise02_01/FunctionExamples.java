@@ -20,6 +20,17 @@ public class FunctionExamples {
 
   public static final Function<Integer, Integer> compose(final Function<Integer, Integer> f1,
                                                          final Function<Integer, Integer> f2) {
-    throw new RuntimeException("To be implemented.");
+    return  new Function<Integer, Integer>() {
+      @Override
+      public Integer apply(Integer arg) {
+        return f1.apply(f2.apply(arg));
+      }
+    };
+  }
+
+  public static void main(String[] args) {
+    Function<Integer, Integer> f1 = compose(triple, square);
+
+    System.out.println(f1.apply(5));
   }
 }
