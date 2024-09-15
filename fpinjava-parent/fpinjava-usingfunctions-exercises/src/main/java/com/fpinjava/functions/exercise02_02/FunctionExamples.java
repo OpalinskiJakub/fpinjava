@@ -8,6 +8,12 @@ public class FunctionExamples {
 
   public static final Function<Integer, Integer> compose(final Function<Integer, Integer> f1,
                                                          final Function<Integer, Integer> f2) {
-    throw new RuntimeException("To be implemented.");
+    return arg -> f1.apply(f2.apply(arg));
+  }
+
+  public static void main(String[] args) {
+    Function<Integer, Integer> composed = compose(triple, square);
+
+    System.out.println(composed.apply(5));
   }
 }
